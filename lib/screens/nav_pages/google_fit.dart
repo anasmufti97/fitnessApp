@@ -147,6 +147,8 @@ class _GoogleFitpageState extends State<GoogleFitpage> {
     return Scaffold(
         drawer: NavDrawer(),
         appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: mainaccent,
           title: const Text('Google Fit'),
           actions: <Widget>[
             Container(
@@ -237,7 +239,7 @@ class _GoogleFitpageState extends State<GoogleFitpage> {
                         iconcolor: Colors.purple,
                       ),
                       gfitcards(
-                        title: 'Heart Rate',
+                        title: 'HeartRate',
                         icondata: FontAwesomeIcons.heartbeat,
                         iconcolor: Colors.redAccent,
                       ),
@@ -272,16 +274,16 @@ class gfitcards extends StatelessWidget {
     return InkWell(
       onTap: ontap as void Function()?,
       child: Container(
-        margin: EdgeInsets.all(10),
+        margin: EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(5),
           boxShadow: [
             BoxShadow(
-              color: Colors.indigoAccent.withOpacity(0.3),
+              color: Colors.indigoAccent.withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 5,
-              offset: Offset(0, 0), // changes position of shadow
+              offset: Offset(0, 3), // changes position of shadow
             ),
           ],
         ),

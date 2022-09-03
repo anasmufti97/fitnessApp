@@ -24,7 +24,6 @@ class RoundButton extends StatelessWidget {
           onPressed: onpress as void Function()?,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(100),
-              side: BorderSide(color: Colors.white, width: 1)
           ),
           child: Text(textval!, style: TextStyleForm),
         ),

@@ -36,7 +36,7 @@ dependencies:
   page_view_indicators: ^2.0.0
   firebase_auth: ^3.6.4
   firebase_core: ^1.21.0
-  cloud_firestore: ^3.4.5
+  cloud_firestore:
   modal_progress_hud_nsn: ^0.3.0
   cron: ^0.5.0
   hive: ^2.2.3
@@ -63,10 +63,21 @@ dependencies:
   shared_preferences: ^2.0.15
   firebase_messaging: ^13.0.0
   flutter_pdfview: ^1.2.3
+  get_storage: ^2.0.3
+  agora_rtc_engine: ^5.3.0
+  flutter_launcher_icons: ^0.10.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+    android: "launcher_icon"
+    ios: true
+    image_path: "images/minerva_tp.png"
+
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -81,32 +92,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/beginner_plan.jpg
-    - images/abs_ex.jpg
-    - images/advance_plan.jpg
-    - images/arm_ex.jpg
-    - images/cards_back.png
-    - images/chest_ex.jpg
-    - images/donevector.jpg
-    - images/gfit_header.png
-    - images/graph_avatar.png
-    - images/inter_plan.jpg
-    - images/jumping_jack.gif
-    - images/jumping_jack2.gif
-    - images/leg_ex.jpg
-    - images/minerva_tp.png
-    - images/minerva.jpg
-    - images/mytrainees.jpg
-    - images/onboardsplash1.png
-    - images/onboardsplash2.png
-    - images/onboardsplash3.png
-    - images/profile_avatar.png
-    - images/profile_trainer.jpg
-    - images/runner_avatar.png
-    - images/shoulder_back_ex.jpg
-    - images/test.gif
-    - images/trainer_head.jpg
-    - images/water_avatar.png
+    - images/
+    - images/gif/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

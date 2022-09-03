@@ -247,7 +247,7 @@ class _inter_shoulder_and_back_exrState
                     ExerCard(
                       title: inter_shoulder_back[i]['title'],
                       req: inter_shoulder_back[i]['reqtype'] == 'time'
-                          ? "00:" + inter_shoulder_back[i]['req']
+                          ? "00:" + inter_shoulder_back[i]['req']!
                           : inter_shoulder_back[i]['req'],
                       gifpath: inter_shoulder_back[i]['anim'],
                     ),

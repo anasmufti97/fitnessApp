@@ -1,13 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitnessapp/components/dark_text_field.dart';
-import 'package:fitnessapp/components/form_text_field.dart';
-import 'package:fitnessapp/components/form_text_field_dark.dart';
-import 'package:fitnessapp/components/round_button.dart';
 import 'package:fitnessapp/components/constants.dart';
 import 'package:fitnessapp/screens/nav_drawer.dart';
 import 'package:fitnessapp/screens/nav_pages/request_instructor.dart';
-import 'package:fitnessapp/screens/nav_pages/video_calling_page.dart';
+import 'package:fitnessapp/videoCalling/index.dart';
 import 'package:flutter/material.dart';
 
 import 'chat_screen.dart';
@@ -51,6 +47,8 @@ class _InstructorPageState extends State<InstructorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: mainaccent,
         title: Text("Instructor"),
         actions: [
           haveins
@@ -99,7 +97,7 @@ class _InstructorPageState extends State<InstructorPage> {
               title: "Join Live Video Call",
               icondata: Icons.video_call,
               onpress: () {
-                // Navigator.push(context, MaterialPageRoute(builder: (context)=>VideoCallPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>IndexPage()));
               },
             ),
           ),

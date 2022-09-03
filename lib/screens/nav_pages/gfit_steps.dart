@@ -149,6 +149,8 @@ class _GfitStepsState extends State<GfitSteps> {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: mainaccent,
         title: Text('Steps'),
         actions: <Widget>[
           Container(

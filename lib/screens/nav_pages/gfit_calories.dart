@@ -148,6 +148,9 @@ class _GfitCaloriesState extends State<GfitCalories> {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: mainaccent,
+        centerTitle: true,
         title: Text('Steps'),
         actions: <Widget>[
           Container(

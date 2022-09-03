@@ -161,7 +161,7 @@ class _BigAarmExrState extends State<BigAarmExr> {
                     ExerCard(
                       title: begarm[i]['title'],
                       req: begarm[i]['reqtype'] == 'time'
-                          ? "00:" + begarm[i]['req']
+                          ? "00:" + begarm[i]['req']!
                           : begarm[i]['req'],
                       gifpath: begarm[i]['anim'],
                     ),

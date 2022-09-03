@@ -54,7 +54,9 @@ class _WaterPageState extends State<WaterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavDrawer(),
-      appBar: AppBar(title: Text("Water Intake")),
+      appBar: AppBar(
+          backgroundColor: mainaccent,
+          title: Text("Water Intake")),
       body: Container(
         child: Column(
           children: [
@@ -106,7 +108,7 @@ class _WaterPageState extends State<WaterPage> {
                       });
                     },
                     child: CircularPercentIndicator(
-                      radius: 200.0,
+                      radius: 150.0,
                       lineWidth: 15.0,
                       percent: perc!,
                       progressColor: Colors.blue[500],

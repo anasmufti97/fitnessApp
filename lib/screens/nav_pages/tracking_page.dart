@@ -91,7 +91,10 @@ class TrackingPageState extends State<TrackingPage>
 
       return new Scaffold(
         key: _scaffoldKey,
-        appBar: AppBar(title:Text("Health Tracking")),
+        appBar: AppBar(
+            elevation: 0.0,
+            backgroundColor: mainaccent,
+            title:Text("Health Tracking")),
         drawer: NavDrawer(),
         body: new IconTheme(
           data: new IconThemeData(color: _kArrowColor),

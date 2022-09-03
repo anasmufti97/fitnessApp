@@ -184,7 +184,7 @@ class _inter_chest_exrState extends State<inter_chest_exr> {
                     ExerCard(
                       title: interchest[i]['title'],
                       req: interchest[i]['reqtype'] == 'time'
-                          ? "00:" + interchest[i]['req']
+                          ? "00:" + interchest[i]['req']!
                           : interchest[i]['req'],
                       gifpath: interchest[i]['anim'],
                     ),

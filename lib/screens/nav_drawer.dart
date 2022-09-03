@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitnessapp/components/constants.dart';
+import 'package:fitnessapp/screens/google_fit.dart';
 import 'package:fitnessapp/screens/login.dart';
 import 'package:fitnessapp/screens/nav_pages/friends.dart';
 import 'package:fitnessapp/screens/nav_pages/instructor_page.dart';
@@ -12,6 +13,8 @@ import 'package:fitnessapp/screens/nav_pages/water_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fitnessapp/screens/nav_pages/google_fit.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'nav_pages/diet_page.dart';
 
@@ -41,6 +44,7 @@ class UserHeader extends StatefulWidget {
   @override
   _UserHeaderState createState() => _UserHeaderState();
 }
+final box = GetStorage();
 
 class _UserHeaderState extends State<UserHeader> {
   late FirebaseAuth auth;
@@ -60,6 +64,7 @@ class _UserHeaderState extends State<UserHeader> {
       print(e);
     }
   }
+  final box = GetStorage();
 
   @override
   void initState() {
@@ -209,7 +214,7 @@ class draweritems extends StatelessWidget {
             Navigator.of(context).pop();
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (BuildContext context) => GoogleFitpage(),
+                builder: (BuildContext context) => HealthApp(),
               ),
             );
           },
@@ -219,7 +224,10 @@ class draweritems extends StatelessWidget {
           trailing: Icon(
             Icons.logout,
           ),
-          onTap: () {
+          onTap: (){
+            // SharedPreferences preferences = SharedPreferences.getInstance() as SharedPreferences;
+            // preferences.clear();
+            box.erase();
             FirebaseAuth.instance.signOut();
             Navigator.pushReplacement(
               context,

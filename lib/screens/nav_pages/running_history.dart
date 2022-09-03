@@ -43,6 +43,8 @@ class _RunningHistoryState extends State<RunningHistory> {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: mainaccent,
         title: Text("Running History"),
       ),
       body: Container(

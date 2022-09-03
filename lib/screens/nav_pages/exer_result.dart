@@ -23,7 +23,10 @@ class _ExesiceReresultState extends State<ExesiceReresult> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF3F5F7),
-      appBar: AppBar(title: Text('Result')),
+      appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: mainaccent,
+          title: Text('Result')),
       body: Container(
         child: Column(
           children: [

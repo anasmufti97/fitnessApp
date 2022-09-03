@@ -17,7 +17,10 @@ class _TrackingDataState extends State<TrackingData> {
     return Scaffold(
       drawer: NavDrawer(),
       backgroundColor: Color(0xFFFAFAFA),
-      appBar: AppBar(title: Text('Tracking'),),
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: mainaccent,
+        title: Text('Tracking'),),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

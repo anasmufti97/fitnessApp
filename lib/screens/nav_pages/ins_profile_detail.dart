@@ -21,6 +21,7 @@ class _InsProfileDetailPageState extends State<InsProfileDetailPage> {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
+        backgroundColor: mainaccent,
         elevation: 0,
         title: Text('Instructor Detail'),
       ),
@@ -78,8 +79,8 @@ class _InsProfileDetailPageState extends State<InsProfileDetailPage> {
                       children: [
                         ClipOval(
                           child: Container(
-                            height: 50,
-                            width: 50,
+                            height: 70,
+                            width: 70,
                             child: Material(
                               color: Colors.blue,
                               child: MaterialButton(
@@ -93,29 +94,7 @@ class _InsProfileDetailPageState extends State<InsProfileDetailPage> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                child: Icon(Icons.chat,size: 15,),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        ClipOval(
-                          child: Container(
-                            height: 50,
-                            width: 50,
-                            child: Material(
-                              color: Colors.green,
-                              child: MaterialButton(
-                                splashColor: Colors.red,
-                                onPressed: () {
-
-                                },
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Icon(Icons.phone,size: 15,),
+                                child: Icon(Icons.chat,size: 25,),
                               ),
                             ),
                           ),

@@ -4,6 +4,7 @@ import 'package:fitnessapp/screens/nav_pages/water_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'screens/splash_screen.dart';
 
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -15,6 +16,7 @@ Future<void> main() async {
   await Hive.openBox<int>('steps');
   await Hive.openBox<bool>('notify');
   await Firebase.initializeApp();
+  await Permission.activityRecognition.request();
 
   runApp(
     MyApp(),
@@ -86,6 +88,7 @@ class _MyAppState extends State<MyApp> {
     precacheImage(AssetImage("images/profile_trainer.jpg"), context);
     precacheImage(AssetImage("images/trainer_head.jpg"), context);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Fitness App',
       theme: ThemeData.light().copyWith(
         primaryColor: mainaccent,

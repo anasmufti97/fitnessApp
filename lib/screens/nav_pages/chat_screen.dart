@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitnessapp/components/constants.dart';
 import 'package:fitnessapp/screens/nav_drawer.dart';
+import 'package:fitnessapp/videoCalling/index.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -25,6 +26,23 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+
+          InkWell(
+
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>IndexPage()));
+setState(() {
+
+});
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Icon(Icons.videocam_outlined, size: 30,),
+            ),
+          )
+        ],
+        backgroundColor: mainaccent,
         title: Text('Minerva Chat'),
       ),
       drawer: NavDrawer(),

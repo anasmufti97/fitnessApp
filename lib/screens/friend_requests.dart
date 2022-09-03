@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitnessapp/components/rect_button.dart';
+import 'package:fitnessapp/utills/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 
@@ -16,6 +17,8 @@ class _FriendRequestsState extends State<FriendRequests> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor:mainaccent,
         title: Text(
           "Friend Requests",
         ),
@@ -142,6 +145,17 @@ class _UserProfileCardState extends State<UserProfileCard> {
         .then((value) => print("Request accepted"))
         .catchError((error) => print("Failed to accept Request: $error"));
 
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userMail)
+        .collection("MyFriends")
+        .doc(traineremail)
+        .set({
+      'id': traineremail,
+    }).then((value) {
+      print("added ins in user");
+      Toast.show("Request Accepted", gravity: Toast.bottom, duration: 4);
+    }).catchError((error) => print("Failed to add ins in user: $error"));
     await FirebaseFirestore.instance
         .collection('users')
         .doc(traineremail)

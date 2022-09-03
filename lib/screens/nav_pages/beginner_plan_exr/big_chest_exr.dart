@@ -100,7 +100,7 @@ class _big_chest_exrState extends State<big_chest_exr> {
                     ExerCard(
                       title: begchest[i]['title'],
                       req: begchest[i]['reqtype'] == 'time'
-                          ? "00:" + begchest[i]['req']
+                          ? "00:" + begchest[i]['req']!
                           : begchest[i]['req'],
                       gifpath: begchest[i]['anim'],
                     ),

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitnessapp/components/dark_text_field.dart';
-import 'package:fitnessapp/components/form_text_field.dart';
 import 'package:fitnessapp/components/round_button.dart';
 import 'package:fitnessapp/components/constants.dart';
 import 'package:fitnessapp/screens/nav_drawer.dart';
@@ -45,7 +44,10 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         drawer: NavDrawer(),
-        appBar: AppBar(title: Text("Profile")),
+        appBar: AppBar(
+            elevation: 0.0,
+            backgroundColor: mainaccent,
+            title: Text("Profile")),
         body: FutureBuilder<DocumentSnapshot>(
           future: users.doc(userid).get(),
           builder:
@@ -64,7 +66,8 @@ class _ProfilePageState extends State<ProfilePage> {
             }
 
             if (snapshot.connectionState == ConnectionState.done) {
-              Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+              Map<String, dynamic> data =
+                  snapshot.data!.data() as Map<String, dynamic>;
 
               return Column(
                 children: [

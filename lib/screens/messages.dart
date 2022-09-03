@@ -1,8 +1,10 @@
-import 'dart:html';
-
 import 'package:fitnessapp/screens/nav_pages/friends.dart';
 import 'package:fitnessapp/screens/nav_pages/instructor_page.dart';
+import 'package:fitnessapp/utills/colors.dart';
 import 'package:flutter/material.dart';
+
+import 'nav_pages/friendchat.dart';
+import 'nav_pages/instructorchat.dart';
 
 class Messages extends StatelessWidget {
   const Messages({Key? key}) : super(key: key);
@@ -14,7 +16,11 @@ class Messages extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          elevation: 0.0,
+          elevation:1
+          ,
+
+          backgroundColor: mainaccent,
+
           title: const Text("Messages"),
           bottom: const TabBar(
             tabs: [
@@ -29,18 +35,8 @@ class Messages extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            InstructorPage(),
-            // Center(
-            //   child: Text(
-            //     "Instructor Messages",
-            //   ),
-            // ),
-            FriendsPage(),
-            // Center(
-            //   child: Text(
-            //     "Friends Messages",
-            //   ),
-            // ),
+            InstructorChat2(),
+            FriendChat2(),
           ],
         ),
       ),

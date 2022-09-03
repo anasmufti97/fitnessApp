@@ -310,7 +310,7 @@ class _inter_arm_exrState extends State<inter_arm_exr> {
                     ExerCard(
                       title: interarm[i]['title'],
                       req: interarm[i]['reqtype'] == 'time'
-                          ? "00:" + interarm[i]['req']
+                          ? "00:" + interarm[i]['req']!
                           : interarm[i]['req'],
                       gifpath: interarm[i]['anim'],
                     ),

@@ -8,7 +8,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class StartExer extends StatefulWidget {
   List getexerlist;
@@ -29,6 +31,12 @@ class _StartExerState extends State<StartExer> {
   String exerKcal;
   String exrtime;
   String exrtitle;
+  int totalkal=0;
+
+  int  totalminutes=0;
+  int totalexersice=0;
+  final box = GetStorage();
+
 
   _StartExerState(this.exerlist, this.exerKcal, this.exrtime, this.exrtitle);
 
@@ -73,10 +81,69 @@ class _StartExerState extends State<StartExer> {
 
   @override
   void initState() {
+    checktotalkalValue();
+    checktotalminutes();
+    checktotalworkoutsValue();
     // TODO: implement initState
     super.initState();
     getCurrentUser();
   }
+
+
+  /// total KAL ???????///
+
+  checktotalkalValue() async {
+    int count = await gettotalkalData() ?? 0;
+    totalkal = count;
+    box.write("getkal", totalkal);
+
+  }
+  gettotalkalData() async {
+    SharedPreferences sprefs = await SharedPreferences.getInstance();
+    int? count = sprefs.getInt('totalkal1');
+    return count;
+  }
+  settotalkalData() async {
+    SharedPreferences sprefs = await SharedPreferences.getInstance();
+    sprefs.setInt('totalkal1', totalkal);
+  }
+
+  /// total minutes
+
+  checktotalminutes() async {
+    int count = await getminutesData() ?? 0;
+    totalminutes = count;
+    box.write("gettotalminutes", totalminutes);
+
+  }
+  getminutesData() async {
+    SharedPreferences sprefs = await SharedPreferences.getInstance();
+    int? count = sprefs.getInt('totaltotalminutes');
+    return count;
+  }
+  setminutesData() async {
+    SharedPreferences sprefs = await SharedPreferences.getInstance();
+    sprefs.setInt('totaltotalminutes', totalminutes);
+  }
+
+  /// total workouts
+
+  checktotalworkoutsValue() async {
+    int count = await gettotalworkoutsData() ?? 0;
+    totalexersice = count;
+    box.write("getworkouts", totalexersice);
+
+  }
+  gettotalworkoutsData() async {
+    SharedPreferences sprefs = await SharedPreferences.getInstance();
+    int? count = sprefs.getInt('totalworkouts');
+    return count;
+  }
+  settotalworkoutsData() async {
+    SharedPreferences sprefs = await SharedPreferences.getInstance();
+    sprefs.setInt('totalworkouts', totalexersice);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -137,16 +204,16 @@ class _StartExerState extends State<StartExer> {
             SizedBox(
               height: 30,
             ),
-            // CountdownTimer(
-            //   onEnd: () {
-            //     setState(() {
-            //       check = false;
-            //     });
-            //   },
-            //   endTime: endTime =
-            //       DateTime.now().millisecondsSinceEpoch + 1000 * 11,
-            //   textStyle: TextStyle(fontSize: 40, color: Colors.white),
-            // ),
+            CountdownTimer(
+              onEnd: () {
+                setState(() {
+                  check = false;
+                });
+              },
+              endTime: endTime =
+                  DateTime.now().millisecondsSinceEpoch + 1000 * 11,
+              textStyle: TextStyle(fontSize: 40, color: Colors.white),
+            ),
             SizedBox(
               height: 30,
             ),
@@ -194,17 +261,17 @@ class _StartExerState extends State<StartExer> {
                     ),
                     if (exerlist[index]['reqtype'].toString() ==
                         'time') // to check time  or sets
-                      // CountdownTimer(
-                      //   onEnd: () {
-                      //     setState(() {
-                      //       check = true;
-                      //     });
-                      //   },
-                      //   endTime: endTime = DateTime.now()
-                      //           .millisecondsSinceEpoch +
-                      //       1000 * int.parse(exerlist[index]['req'].toString()),
-                      //   textStyle: TextStyleHeading,
-                      // ),
+                      CountdownTimer(
+                        onEnd: () {
+                          setState(() {
+                            check = true;
+                          });
+                        },
+                        endTime: endTime = DateTime.now()
+                                .millisecondsSinceEpoch +
+                            1000 * int.parse(exerlist[index]['req'].toString()),
+                        textStyle: TextStyleHeading,
+                      ),
                       if (exerlist[index]['reqtype'].toString() ==
                           'sets') // to check time  or sets
                         Text(
@@ -218,6 +285,12 @@ class _StartExerState extends State<StartExer> {
                       width: 100,
                       onpress: () {
                         setState(() {
+                          totalkal= totalkal+14;
+                          totalminutes=totalminutes+1;
+                          totalexersice= totalexersice+1;
+                          settotalkalData();
+                          settotalworkoutsData();
+                          setminutesData();
                           check = true;
                         });
                       },

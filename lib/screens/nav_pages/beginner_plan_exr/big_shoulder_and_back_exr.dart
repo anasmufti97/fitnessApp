@@ -150,7 +150,7 @@ class _big_shoulder_and_back_exrState extends State<big_shoulder_and_back_exr> {
                     ExerCard(
                       title: beg_shoulder_back[i]['title'],
                       req: beg_shoulder_back[i]['reqtype'] == 'time'
-                          ? "00:" + beg_shoulder_back[i]['req']
+                          ? "00:" + beg_shoulder_back[i]['req']!
                           : beg_shoulder_back[i]['req'],
                       gifpath: beg_shoulder_back[i]['anim'],
                     ),

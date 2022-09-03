@@ -20,7 +20,6 @@ class _interplanState extends State<interplan> {
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text("Intermediate Plan"),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),

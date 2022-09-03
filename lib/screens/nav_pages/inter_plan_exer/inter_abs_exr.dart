@@ -271,7 +271,7 @@ class _inter_abs_exrState extends State<inter_abs_exr> {
                     ExerCard(
                       title: interabs[i]['title'],
                       req: interabs[i]['reqtype'] == 'time'
-                          ? "00:" + interabs[i]['req']
+                          ? "00:" + interabs[i]['req']!
                           : interabs[i]['req'],
                       gifpath: interabs[i]['anim'],
                     ),

@@ -38,6 +38,8 @@ class _ContentPageState extends State<ContentPage> {
       backgroundColor: Color(0xFFFAFAFA),
       drawer: NavDrawer(),
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: mainaccent,
         title: Text("Content"),
       ),
       body: Container(

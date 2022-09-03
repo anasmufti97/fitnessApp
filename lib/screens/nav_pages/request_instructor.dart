@@ -17,6 +17,8 @@ class _ReqInstructorState extends State<ReqInstructor> {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: mainaccent,
         title: Text("All Instructors"),
       ),
       body: Container(

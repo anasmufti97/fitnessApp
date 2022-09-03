@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitnessapp/components/constants.dart';
+import 'package:fitnessapp/utills/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../videocalling/index.dart';
 
 class UserChatscreen extends StatefulWidget {
-  final String recvremail;
+  String? recvremail;
 
-  UserChatscreen({required this.recvremail});
+  UserChatscreen({this.recvremail});
 
   @override
   _UserChatscreenState createState() => _UserChatscreenState();
@@ -17,24 +18,36 @@ class _UserChatscreenState extends State<UserChatscreen> {
   String currentuser = FirebaseAuth.instance.currentUser!.email.toString();
   String? msg;
   final textfieldcontroller = TextEditingController();
+  String? commonId;
+
+
 
   @override
   Widget build(BuildContext context) {
+    if(currentuser.hashCode<=widget.recvremail.hashCode){
+      commonId='$currentuser-${widget.recvremail}';
+    }else{
+      commonId='${widget.recvremail}-$currentuser';
+    }
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: mainaccent,
         title: Text('Minerva Chat'),
         actions: [
-          IconButton(
-            onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => VideoCall(),
-              //   ),
-              // );
+          InkWell(
+
+            onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => IndexPage()));
             },
-            icon: Icon(Icons.video_camera_front),
-          ),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Icon(Icons.videocam_outlined, size: 30,),
+            ),
+          )
         ],
       ),
       body: Container(
@@ -44,10 +57,8 @@ class _UserChatscreenState extends State<UserChatscreen> {
           children: [
             StreamBuilder(
               stream: FirebaseFirestore.instance
-                  .collection('users')
-                  .doc(currentuser)
-                  .collection('chats')
-                  .doc(currentuser + " and " + widget.recvremail)
+                  .collection('userChats')
+                  .doc(commonId)
                   .collection('msgs')
                   .orderBy('timestamp')
                   .snapshots(),
@@ -140,19 +151,17 @@ class _UserChatscreenState extends State<UserChatscreen> {
     String formattedtime = formattertime.format(now);
 
     await FirebaseFirestore.instance
-        .collection('users')
-        .doc(currentuser)
-        .collection('chats')
-        .doc(currentuser + " and " + widget.recvremail)
+        .collection('userChats')
+        .doc(commonId)
         .collection('msgs')
         .doc()
         .set({
-          'sender': currentuser,
-          'text': text,
-          // 'date': formattedDate.toString(),
-          'time': formattedtime.toString(),
-          'timestamp': FieldValue.serverTimestamp(),
-        })
+      'sender': currentuser,
+      'text': text,
+      // 'date': formattedDate.toString(),
+      'time': formattedtime.toString(),
+      'timestamp': FieldValue.serverTimestamp(),
+    })
         .then((value) => print('Sent text'))
         .catchError((error) => print("Failed to sent text: $error"));
   }
@@ -172,7 +181,7 @@ class msgbubble extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment:
-            isMe! ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        isMe! ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
           Text(
             sender!,
@@ -181,15 +190,15 @@ class msgbubble extends StatelessWidget {
           Material(
             borderRadius: isMe!
                 ? BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
-                  )
+              topLeft: Radius.circular(30),
+              bottomLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+            )
                 : BorderRadius.only(
-                    topRight: Radius.circular(30),
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
-                  ),
+              topRight: Radius.circular(30),
+              bottomLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+            ),
             elevation: 5.0,
             color: isMe! ? Colors.indigo : Colors.grey[100],
             child: Container(

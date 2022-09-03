@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fitnessapp/components/constants.dart';
 import 'package:fitnessapp/screens/friends_chat.dart';
+import 'package:fitnessapp/utills/colors.dart';
 import 'package:flutter/material.dart';
 
 class TraineProfile extends StatefulWidget {
@@ -67,6 +67,7 @@ class _TraineProfileState extends State<TraineProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: mainaccent,
         title: Text("Trainee Profile"),
         elevation: 0.0,
       ),
@@ -149,31 +150,6 @@ class _TraineProfileState extends State<TraineProfile> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          ClipOval(
-                            child: Container(
-                              width: 60,
-                              height: 60,
-                              child: Material(
-                                elevation: 5,
-                                color: Colors.green,
-                                child: MaterialButton(
-                                  elevation: 5,
-                                  splashColor: Colors.red,
-                                  onPressed: () {},
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Icon(
-                                    Icons.call,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
                         ],
                       ),
                       SizedBox(

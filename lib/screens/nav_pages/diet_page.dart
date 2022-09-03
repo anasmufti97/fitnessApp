@@ -13,20 +13,21 @@ class _DietPageState extends State<DietPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text('Diet')),
-        drawer: NavDrawer(),
-        body: ModalProgressHUD(
-          inAsyncCall: isloading,
-          child: WebView(
-            initialUrl: 'https://www.myfitnesspal.com/food/search',
-            javascriptMode: JavascriptMode.unrestricted,
-            onPageFinished: (finish) {
-              setState(() {
-                isloading = false;
-              });
-            },
-          ),
-        ));
+    return SafeArea(
+      child: Scaffold(
+          drawer: NavDrawer(),
+          body: ModalProgressHUD(
+            inAsyncCall: isloading,
+            child: WebView(
+              initialUrl: 'https://www.myfitnesspal.com/food/search',
+              javascriptMode: JavascriptMode.unrestricted,
+              onPageFinished: (finish) {
+                setState(() {
+                  isloading = false;
+                });
+              },
+            ),
+          )),
+    );
   }
 }

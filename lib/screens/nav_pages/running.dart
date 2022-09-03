@@ -229,14 +229,17 @@ class _RunningPageState extends State<RunningPage> {
         resizeToAvoidBottomInset: false,
         drawer: NavDrawer(),
         appBar: AppBar(
-          title: Text("running"),
+          elevation: 0.0,
+          backgroundColor: mainaccent,
+          title: Text("Running"),
+          centerTitle: true,
         ),
         body: Container(
           child: Column(
             children: [
               Container(
                 decoration: BoxDecoration(
-                    color: mainaccent,
+                    color: mainaccent.withOpacity(0.8),
                     borderRadius: BorderRadius.only(
                         bottomRight: Radius.elliptical(400, 60),
                         bottomLeft: Radius.elliptical(400, 60))),
@@ -271,7 +274,7 @@ class _RunningPageState extends State<RunningPage> {
                         height: 20,
                       ),
                       CircularPercentIndicator(
-                        radius: 200.0,
+                        radius: 150.0,
                         lineWidth: 15.0,
                         percent: 0.0,
                         progressColor: Colors.blue[500],
@@ -280,12 +283,15 @@ class _RunningPageState extends State<RunningPage> {
                           children: [
                             CircleAvatar(
                               radius: 50,
-                              backgroundColor: mainaccent,
+                              backgroundColor: Colors.transparent,
                               backgroundImage:
                                   AssetImage("images/runner_avatar.png"),
                             ),
+                            SizedBox(
+                              height: 30,
+                            ),
                             Text(
-                              todaySteps.toString(),
+                              todaySteps==null?"0":todaySteps.toString(),
                               style: TextStyleForm,
                             )
                           ],

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitnessapp/components/round_button.dart';
+import 'package:fitnessapp/utills/colors.dart';
 import 'package:flutter/material.dart';
 
 class AllUsers extends StatefulWidget {
@@ -15,6 +16,8 @@ class _AllUsersState extends State<AllUsers> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: mainaccent,
         title: Text("All Trainees"),
       ),
       body: Container(

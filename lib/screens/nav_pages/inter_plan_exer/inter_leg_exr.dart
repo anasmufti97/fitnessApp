@@ -358,7 +358,7 @@ class _inter_leg_exrState extends State<inter_leg_exr> {
                     ExerCard(
                       title: interleg[i]['title'],
                       req: interleg[i]['reqtype'] == 'time'
-                          ? "00:" + interleg[i]['req']
+                          ? "00:" + interleg[i]['req']!
                           : interleg[i]['req'],
                       gifpath: interleg[i]['anim'],
                     ),

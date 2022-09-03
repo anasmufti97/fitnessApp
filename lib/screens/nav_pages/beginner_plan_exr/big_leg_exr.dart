@@ -161,7 +161,7 @@ class _big_leg_exrState extends State<big_leg_exr> {
                     ExerCard(
                       title: begleg[i]['title'],
                       req: begleg[i]['reqtype'] == 'time'
-                          ? "00:" + begleg[i]['req']
+                          ? "00:" + begleg[i]['req']!
                           : begleg[i]['req'],
                       gifpath: begleg[i]['anim'],
                     ),

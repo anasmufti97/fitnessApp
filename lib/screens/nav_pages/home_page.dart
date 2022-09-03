@@ -3,12 +3,14 @@ import 'package:day_picker/day_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitnessapp/components/plan_cards.dart';
 import 'package:fitnessapp/components/constants.dart';
+import 'package:fitnessapp/screens/messages.dart';
 import 'package:fitnessapp/screens/nav_drawer.dart';
 import 'package:fitnessapp/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:fitnessapp/components/round_button.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:toast/toast.dart';
@@ -43,6 +45,8 @@ class _HomePageState extends State<HomePage> {
       print(e);
     }
   }
+  final box = GetStorage();
+
 
   Future _showNotificatiion() async {
     var androidDetails = new AndroidNotificationDetails(
@@ -85,16 +89,29 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Color(0xFFFAFAFA),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: mainaccent,
         title: Text("Home Page"),
         actions: [
+          InkWell(
+              onTap: (){
+                setState(() {
+
+                });
+
+              },
+              child: Icon(Icons.refresh)),
+
           IconButton(
             icon: Icon(
               Icons.send,
               color: Colors.white,
             ),
             onPressed: () {
-              
-            },
+
+              Navigator.push(context,MaterialPageRoute(builder: (context) =>Messages() )
+              );},
           )
         ],
       ),
@@ -123,7 +140,8 @@ class _HomePageState extends State<HomePage> {
                             Column(
                               children: [
                                 Text(
-                                  "0",
+                                  box.read('getworkouts')==null?"0":box.read('getworkouts').toString(),
+
                                   style: TextStyleForm,
                                 ),
                                 SizedBox(
@@ -138,7 +156,8 @@ class _HomePageState extends State<HomePage> {
                             Column(
                               children: [
                                 Text(
-                                  "0",
+                                  box.read('getkal')==null?"0":box.read('getkal').toString(),
+
                                   style: TextStyleForm,
                                 ),
                                 SizedBox(
@@ -153,8 +172,8 @@ class _HomePageState extends State<HomePage> {
                             Column(
                               children: [
                                 Text(
-                                  "0",
-                                  style: TextStyleForm,
+                                  box.read('gettotalminutes')==null?"0":box.read('gettotalminutes').toString()
+                                  ,style: TextStyleForm,
                                 ),
                                 SizedBox(
                                   height: 20,
@@ -173,18 +192,18 @@ class _HomePageState extends State<HomePage> {
                           child: Container(
                             margin: EdgeInsets.only(left: 10, right: 10),
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.transparent,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
                             padding: EdgeInsets.all(20),
-                            child: showuserWeekdays(),
+                            // child: showuserWeekdays(),
                           )),
                     ],
                   ),
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 40),
+                margin: EdgeInsets.only(top:5),
                 child: Column(
                   children: [
                     PlanCards(
@@ -220,7 +239,13 @@ class _HomePageState extends State<HomePage> {
                       color1: Colors.red,
                       color2: Colors.red,
                       color3: Colors.red,
-                      ontap: () {},
+                      ontap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => interplan()),
+                        );
+
+                      },
                     ),
                     Container(
                       margin: EdgeInsets.all(10),

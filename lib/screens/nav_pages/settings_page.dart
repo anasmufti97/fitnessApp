@@ -81,6 +81,8 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: mainaccent,
         title: Text('Notification testing'),
       ),
       body: Container(
